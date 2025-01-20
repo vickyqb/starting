@@ -9,6 +9,10 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-candid = "0.10"
+bip39 = "2.1.0"
+bitcoin = "0.32.5"
+candid = "0.10.12"
 ic-cdk = "0.16"
-ic-cdk-timers = "0.10" # Feel free to remove this dependency if you don't need timers
+ic-cdk-timers = "0.10"
+serde = { version = "1.0", features = ["derive"] }
+

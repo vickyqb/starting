@@ -1,14 +1,24 @@
 import { useState } from 'react';
-import { myapp_backend } from 'declarations/myapp_backend';
+import { myapp_backend } from '../../declarations/myapp_backend';
 
 function App() {
   const [greeting, setGreeting] = useState('');
+  const [name, setName] = useState(''); 
+  const [principle, setPrinciple] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
-    const name = event.target.elements.name.value;
+    console.log('name:', name);
     myapp_backend.greet(name).then((greeting) => {
       setGreeting(greeting);
+    });
+    return false;
+  }
+
+  function getPrinciple() {
+    myapp_backend.user_info().then((principle) => {
+      console.log('principle:', principle);
+      setPrinciple(principle);
     });
     return false;
   }
@@ -20,9 +30,10 @@ function App() {
       <br />
       <form action="#" onSubmit={handleSubmit}>
         <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
+        <input id="name" name='name' alt="Name" type="text" onChange={(e)=>{setName(e.target.value)}}/>
         <button type="submit">Click Me!</button>
       </form>
+      <button onClick={getPrinciple}>get principle</button>
       <section id="greeting">{greeting}</section>
     </main>
   );

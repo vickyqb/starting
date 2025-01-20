@@ -1,3 +1,2 @@
-service : {
-    "greet": (text) -> (text) query;
-}
+type UserData = record { "principal" : text };
+service : { greet : (text) -> (text) query; user_info : () -> (UserData) }
