@@ -22,6 +22,12 @@ function App() {
     });
     return false;
   }
+  function getUsers() {
+    myapp_backend.get_old_users().then((users) => {
+      console.log('users:', users);
+    });
+    return false;
+  }
 
   return (
     <main>
@@ -35,6 +41,7 @@ function App() {
       </form>
       <button onClick={getPrinciple}>get principle</button>
       <section id="greeting">{greeting}</section>
+      <button onClick={getUsers}>get users</button>
     </main>
   );
 }

@@ -1,7 +1,9 @@
 use ic_cdk::api;
-use ic_cdk::{export_candid,query, update};
+use ic_cdk::{export_candid, query, update};
 use serde::{Deserialize, Serialize };
 use candid:: CandidType;
+mod user;
+use user::User;
 
 #[derive(Serialize, Deserialize, Clone, CandidType)]
 struct UserData {
@@ -21,4 +23,5 @@ fn user_info() -> UserData {
         principal: caller.to_text(),
     }
 }
+
 export_candid!();

@@ -1,2 +1,8 @@
+type User = record { age : nat32; name : text };
 type UserData = record { "principal" : text };
-service : { greet : (text) -> (text) query; user_info : () -> (UserData) }
+service : {
+  create_new_user : (text, nat32) -> ();
+  get_old_users : () -> (vec User) query;
+  greet : (text) -> (text) query;
+  user_info : () -> (UserData);
+}
